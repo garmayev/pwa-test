@@ -13,6 +13,16 @@
       "sizes": "192x192"
     },
     {
+      "src": "/images/logo32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/images/logo16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
       "src": "/favicon.ico",
       "type": "image/png"
     }

@@ -1,7 +1,7 @@
 self.addEventListener("install", (e) => {
-    console.log(e);
+    alert("Install");
 });
 
 self.addEventListener("activate", (e) => {
-    console.log(e);
+    alert("Activate");
 });
