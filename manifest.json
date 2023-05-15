@@ -1,0 +1,27 @@
+{
+  "short_name": "AMG Company",
+  "name": "AMG Company",
+  "icons": [
+    {
+      "src": "/images/logo512.png",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/png"
+    }
+  ],
+  "id": "/?fullscreen=true",
+  "start_url": "/?fullscreen=true",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#ffffff",
+  "description": "Weather forecast information"
+}

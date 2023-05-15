@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMG Systems</title>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register("./js/sw.js")
+                .then((reg) => {
+                    console.log(reg.scope)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
