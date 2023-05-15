@@ -1,37 +1,45 @@
 {
+  "lang": "ru_RU",
+  "scope": "/",
   "short_name": "AMG Company",
   "name": "AMG Company",
+  "description": "Приложение от компании AMG Company",
+  "background_color": "#ccc",
+  "display": "fullscreen",
+  "theme_color": "#000",
   "icons": [
     {
       "src": "/images/logo512.png",
       "type": "image/svg+xml",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     },
     {
       "src": "/images/logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "/images/logo32.png",
       "type": "image/png",
-      "sizes": "32x32"
+      "sizes": "32x32",
+      "purpose": "any maskable"
     },
     {
       "src": "/images/logo16.png",
       "type": "image/png",
-      "sizes": "16x16"
+      "sizes": "16x16",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.ico",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "id": "/?fullscreen=true",
-  "start_url": "/?fullscreen=true",
-  "background_color": "#ffffff",
-  "display": "fullscreen",
-  "scope": "/",
-  "theme_color": "#ffffff",
-  "description": "Weather forecast information"
+  "start_url": "https://pwa.local/index.html?fullscreen=true",
+  "dir": "ltr",
+  "orientation": "portrait"
 }
