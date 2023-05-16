@@ -9,17 +9,25 @@
     <title>AMG Systems</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json" type="application/manifest+json">
+    <script src="cache.js"></script>
 </head>
 <body>
-<h1>InstallableR</h1>
+    <h1>AMG Company</h1>
 
-<div id="installContainer">
-    <div id="logo">
-        <img src="images/logo192.png">
+    <div id="installContainer">
+        <div id="logo">
+            <img src="images/logo192.png" alt="AMG Company">
+        </div>
+        <button id="butInstall" type="button">Install</button>
     </div>
-    <button id="butInstall" type="button">Install</button>
-</div>
 
-<script src="/script.js" defer></script>
+    <div id="disconnect" class="hidden">
+        <div id="disconnectLogo">
+            <img src="images/disconnected.png" alt="disconnected">
+        </div>
+        <p>Network connection missing! Check internet connection!</p>
+    </div>
+
+    <script src="/script.js" defer></script>
 </body>
 </html>

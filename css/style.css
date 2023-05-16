@@ -13,17 +13,20 @@ h1 {
 .hidden {
   display: none !important;
 }
-#installContainer {
+#installContainer,
+#disconnect {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-#installContainer #logo {
+#installContainer #logo,
+#disconnect #logo {
   text-align: center;
   padding-bottom: 2em;
 }
-#installContainer button {
+#installContainer button,
+#disconnect button {
   cursor: pointer;
   background-color: inherit;
   border: 1px solid white;
@@ -34,7 +37,8 @@ h1 {
   max-width: 10em;
   transition: 0.3s;
 }
-#installContainer button:hover {
+#installContainer button:hover,
+#disconnect button:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 /*# sourceMappingURL=style.css.map */

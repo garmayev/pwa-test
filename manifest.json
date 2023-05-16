@@ -33,7 +33,7 @@
     }
   ],
   "id": "/?fullscreen=true",
-  "start_url": "https://pwa.local/index.html?fullscreen=true",
+  "start_url": "https://pwa.local/application/index.html?fullscreen=true",
   "dir": "ltr",
   "orientation": "portrait",
   "prefer_related_applications": false
