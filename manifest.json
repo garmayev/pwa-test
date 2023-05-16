@@ -4,7 +4,7 @@
   "short_name": "AMG Company",
   "name": "AMG Company",
   "description": "Приложение от компании AMG Company",
-  "background_color": "#ccc",
+  "background_color": "#546E7A",
   "display": "fullscreen",
   "theme_color": "#000",
   "icons": [
@@ -12,34 +12,29 @@
       "src": "/images/logo512.png",
       "type": "image/svg+xml",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "/images/logo192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
-      "src": "/images/logo32.png",
+      "src": "/images/logo192.png",
       "type": "image/png",
-      "sizes": "32x32",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/images/logo16.png",
-      "type": "image/png",
-      "sizes": "16x16",
-      "purpose": "any maskable"
+      "sizes": "144x144",
+      "purpose": "any"
     },
     {
       "src": "/favicon.ico",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "id": "/?fullscreen=true",
   "start_url": "https://pwa.local/index.html?fullscreen=true",
   "dir": "ltr",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "prefer_related_applications": false
 }
