@@ -1,36 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="theme-color" content="#fff">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="AMG Company Application">
-    <link rel="apple-touch-icon" href="/images/logo512.png">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Application</title>
-    <script crossorigin src="//unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="//unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="//unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <script src="./js/application.js" type="text/babel"></script>
-    <script type="text/babel" data-type="module">
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(
-            <Application/>
-        );
-    </script>
-</head>
-<body>
-<div id="root"></div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="theme-color" content="#fff">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="AMG Company Application">
+        <link rel="apple-touch-icon" href="/images/logo512.png">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+              integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet"
+              href="//cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"/>
+        <link rel="manifest" href="/manifest.json" type="application/manifest+json">
+        <title>Application</title>
+        <script crossorigin src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script crossorigin src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script crossorigin src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+                integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/script.js"></script>
+        <script>
+            if('contacts' in navigator && 'ContactsManager' in window) {
+                const props = await navigator.contacts.getProperties();
+                const list = document.querySelector('#contacts');
+                const button = document.querySelector('#select-contacts');
+
+                list.innerHTML = '';
+
+                const showContacts = contacts => {
+                    const html = contacts.reduce((html, contact) => {
+                        const names = contact.name.join(', ');
+                        const emails = contact.email.join(', ');
+                        const telephone = contact.tel.join(', ');
+
+                        return `${html}
+            <p>
+              <span>
+                <i class="material-icons">person</i>
+                <strong>${names}</strong><br>
+              </span>
+              <span>
+                <i class="material-icons">mail_outline</i>
+                ${emails}<br>
+              </span>
+              <span>
+                <i class="material-icons">phone</i>
+                ${telephone}</p>
+              </span>
+            `;
+                    }, ``);
+
+                    list.innerHTML = html;
+                };
+
+                button.addEventListener('click', async e => {
+                    const contacts = await navigator.contacts.select(props, {multiple: true});
+
+                    showContacts(contacts);
+                });
+            }
+        </script>
+        <script type="module">
+            import Helper from "./js/components/Helper.js";
+            import Select2 from './js/components/Select2.js';
+            import Application from "./js/application.js";
+
+            customElements.defineclone = Object.assign(Object.create(Object.getPrototypeOf(customElements)).define, customElements);
+            customElements.define = (name, element) => customElements.get(name) || customElements.defineclone(name, element);
+
+            customElements.get('my-select') || customElements.define('my-select', Select2, {extends: 'div'});
+
+            let csrf = Helper.ajax('//api.local/v1/default/csrf');
+            console.log(csrf);
+            window.csrf = csrf;
+
+            window.app = new Application({container: document.querySelector('#root')})
+            window.app.render();
+        </script>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <div id="root"></div>
+        <p>
+            <button id="select-contacts" disabled=""></button>
+        </p>
+
+        <h3>Selected contacts</h3>
+        <section id="contacts"></section>
+    </body>
 </html>

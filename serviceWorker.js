@@ -34,7 +34,12 @@ self.addEventListener("install", (e) => {
 });
 
 self.addEventListener("activate", (e) => {
+
 });
+
+self.addEventListener("message", ({data}) => {
+    console.log(data)
+})
 
 self.addEventListener("fetch", evt => {
     evt.respondWith(
