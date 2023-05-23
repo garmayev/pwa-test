@@ -52,3 +52,22 @@ self.addEventListener("fetch", evt => {
             })
     )
 })
+
+self.addEventListener('push', function (event) {
+    if (!(self.Notification && self.Notification.permission === 'granted')) {
+        return;
+    }
+
+    const sendNotification = body => {
+        const title = "Заголовок уведомления";
+
+        return self.registration.showNotification(title, {
+            body,
+        });
+    };
+
+    if (event.data) {
+        const message = event.data.text();
+        event.waitUntil(sendNotification(message));
+    }
+});
